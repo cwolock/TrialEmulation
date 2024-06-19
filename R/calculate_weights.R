@@ -60,7 +60,6 @@ calculate_switch_weights <- function(object) {
     label = "P(treatment = 1 | previous treatment = 0) for numerator"
   )
   set(object@data@data, i = model_0_index, j = "p_n", value = object@switch_weights@fitted[["n0"]]@fitted)
-  print("hello!!")
   object@switch_weights@fitted[["d0"]] <- fit_weights_model(
     object = object@switch_weights@model_fitter,
     data = object@data@data[model_0_index, ],
