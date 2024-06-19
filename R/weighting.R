@@ -266,6 +266,9 @@ fit_switch_weights <- function(switch_d_cov,
     glm_function = glm_function
   )
 
+  # once vaccinated, you cannot "switch" so just make all these predictions 1 regardless of what happens
+  model3$fitted.values <- rep(1, length(model3$fitted.values))
+
   switch_d1 <- cbind(p1_d = model3$fitted.values, model3$data[, c("eligible1", "id", "period")])
 
   switch_models$switch_d1 <- process_weight_model(
@@ -286,6 +289,9 @@ fit_switch_weights <- function(switch_d_cov,
     ...,
     glm_function = glm_function
   )
+
+  # once vaccinated, you cannot "switch" so just make all these predictions 1 regardless of what happens
+  model4$fitted.values <- rep(1, length(model4$fitted.values))
 
   switch_n1 <- cbind(p1_n = model4$fitted.values, model4$data[, c("eligible1", "id", "period")])
 
